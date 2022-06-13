@@ -1,11 +1,6 @@
 data "aws_ami" "amazon-linux" {
   most_recent = true
-  owners      = ["amazon"]
-
-  filter {
-    name   = "name"
-    values = ["amzn-ami-hvm-*-x86_64-ebs"]
-  }
+  name = "Test_EC2_325"
 }
 
 resource "aws_launch_configuration" "app_layer_config" {

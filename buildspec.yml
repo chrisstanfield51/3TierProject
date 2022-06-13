@@ -1,0 +1,31 @@
+version: 0.2
+
+env:
+  parameter-store:
+    #Requires that you have a secure string in AWS Systems Manager Parameter Store
+    #called "snykAuthToken" with your Snyk token.
+    SNYK_TOKEN: "snykAuthToken"
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: latest
+    commands:
+      - npm install snyk -g
+      - yum install -y yum-utils
+      - yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
+      - yum -y install terraform
+      
+  build:
+    commands:
+      - snyk iac test . --severity-threshold=high
+#      - terraform init
+#      - terraform apply -auto-approve
+
+  post_build:
+    commands:
+      - echo "Terraform completed on `date`"
+
+artifacts:
+  files:
+    - '**/*'
