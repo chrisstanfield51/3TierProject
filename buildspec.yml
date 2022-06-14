@@ -19,8 +19,8 @@ phases:
   build:
     commands:
       - snyk iac test . --severity-threshold=high
-#      - terraform init
-#      - terraform apply -auto-approve
+      - terraform init
+      - terraform apply -auto-approve
 
   post_build:
     commands:
