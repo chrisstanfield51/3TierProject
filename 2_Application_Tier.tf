@@ -1,12 +1,15 @@
-data "aws_ami" "amazon-linux" {
+data "aws_ami" "ubuntu-linux" {
   most_recent = true
-  name = "Test_EC2_325"
   owners = ["self"]
+  filter {
+    name   = "name"
+    values = ["Test_EC2*"]
+  }
 }
 
 resource "aws_launch_configuration" "app_layer_config" {
   name_prefix     = "APP-"
-  image_id        = data.aws_ami.amazon-linux.id
+  image_id        = data.aws_ami.ubuntu-linux.id
   instance_type   = "t2.micro"
   security_groups = [aws_security_group.middle_security_group.id]
 
