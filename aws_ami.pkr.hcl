@@ -9,15 +9,18 @@ packer {
 
 variable "PKR_VAR_ACCESS_ID" {
   type    = string
+  default = "${env("AWS_ACCESS_KEY_ID")}"
+
 }
 
 variable "PKR_VAR_ACCESS_SECRET" {
   type    = string
+  default   = "${env("AWS_SECRET_ACCESS_KEY")}"
 }
 
 source "amazon-ebs" "image" {
-  access_key = ${var.PKR_VAR_ACCESS_ID}
-  secret_key = ${var.PKR_VAR_ACCESS_SECRET}
+  access_key       = "${var.PKR_VAR_ACCESS_ID}"
+  secret_key       = "${var.PKR_VAR_ACCESS_SECRET}"
   ami_name         = "Test_EC2_325"
   instance_type    = "t2.micro"
   ssh_username     = "ec2-user"
