@@ -1,6 +1,7 @@
 data "aws_ami" "amazon-linux" {
   most_recent = true
   name = "Test_EC2_325"
+  owners = ["self"]
 }
 
 resource "aws_launch_configuration" "app_layer_config" {
