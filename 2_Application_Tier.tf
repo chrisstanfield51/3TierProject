@@ -26,6 +26,25 @@ resource "aws_autoscaling_group" "App_instances" {
   launch_configuration = aws_launch_configuration.app_layer_config.name
   vpc_zone_identifier  = [aws_subnet.Middle-A.id, aws_subnet.Middle-B.id]
 
+  tag {
+    key                 = "Created_At"
+    value               = timestamp()
+    propagate_at_launch = true
+  }
+
+  tag {
+    key                 = "Environment"
+    value               = "Test"
+    propagate_at_launch = true
+  }
+
+  tag {
+    key                 = "Created_By"
+    value               = "Terraform"
+    propagate_at_launch = true
+  }
+
+
 }
 
 resource "aws_lb" "App_lb" {
