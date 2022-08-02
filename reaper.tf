@@ -34,10 +34,21 @@ resource "aws_iam_role_policy_attachment" "AWSLambdaVPCAccessExecutionRole" {
     policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole"
 }
 
-resource "aws_iam_role_policy_attachment" "AWSEC2Access" {
+resource "aws_iam_role_policy_attachment" "AWSEC2ResourceAccess" {
     role       = aws_iam_role.iam_for_lambda.name
     policy_arn = "arn:aws:iam::aws:policy/AmazonEC2FullAccess"
 }
+
+resource "aws_iam_role_policy_attachment" "AWSRDSResourceAccess" {
+    role       = aws_iam_role.iam_for_lambda.name
+    policy_arn = "arn:aws:iam::aws:policy/AmazonRDSFullAccess"
+}
+
+#resource "aws_iam_role_policy_attachment" "AWSS3ResourceAccess" {
+#    role       = aws_iam_role.iam_for_lambda.name
+#    policy_arn = "arn:aws:iam::aws:policy/AmazonS3FullAccess"
+#
+#}
 
 data "archive_file" "lambda_code_deploy" {
   type = "zip"
