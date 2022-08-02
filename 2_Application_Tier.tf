@@ -1,10 +1,11 @@
 data "aws_ami" "ubuntu-linux" {
   most_recent = true
-  owners = ["self"]
-  filter {
-    name   = "name"
-    values = ["Test_EC2*"]
-  }
+  owners = ["amazon"]
+#  owners = ["self"]
+#  filter {
+#    name   = "name"
+#    values = ["Test_EC2*"]
+#  }
 }
 
 resource "aws_launch_configuration" "app_layer_config" {

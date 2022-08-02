@@ -1,12 +1,16 @@
 #Grab latest ami image for AWS linux 2
 data "aws_ami" "amazon-linux-2" {
   most_recent = true
-
-  filter {
-    name = "name"
-    values = ["amzn2-ami-hvm-*-x86_64-ebs"]
-  }
   owners = ["amazon"]
+
+
+
+
+#  filter {
+#    name = "name"
+#    values = ["amzn2-ami-hvm-*-x86_64-ebs"]
+#  }
+#  owners = ["amazon"]
 }
 
 #create instance to be test jump box

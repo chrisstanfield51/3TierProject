@@ -16,4 +16,10 @@ resource "aws_db_instance" "default" {
   skip_final_snapshot  = true
   db_subnet_group_name = aws_db_subnet_group.db-subnet.id
   vpc_security_group_ids = [aws_security_group.back_security_group.id]
+
+  tags  = {
+    key                 = "Created_At"
+    value               = timestamp()
+    propagate_at_launch = true
+  }
 }
