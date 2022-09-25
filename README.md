@@ -3,7 +3,7 @@
 ***This project is currently in progress.  Better explanation to come.***
 
 This is a basic 3 tier architecture with a presentation tier, application tier, data tier, and a reaper function.
-As of now there is no application to test as the goal of this project was to achomplish the following:
+As of now there is no application to test as the goal of this project was to accomplish the following:
 - (Complete) Create a 3 tier architecture with terraform.  The IaC builds an S3 bucket for Presentation Tier with CloudFront setup, an EC2 autoscaling group with an ELB attached in the Application Tier, and an RDS instance in the Data Tier.  Security groups and IAM roles are added as well.
 - (Complete) Deploy these resources utlizing CodePipeline.  
 - (Complete) Test the IAC with SNYK to ensure security.
